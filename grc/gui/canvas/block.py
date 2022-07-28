@@ -123,7 +123,7 @@ class Block(CoreBlock, Drawable):
             return colors.BORDER_COLOR_DISABLED
 
         self._bg_color = get_bg()
-        self._font_color[-1] = 1.0 if self.state == 'enabled' else 0.4
+        self._font_color = list(colors.FONT_COLOR) if self.state == 'enabled' else [0,0,0,1]
         self._border_color = get_border()
 
     def create_shapes(self):
@@ -260,7 +260,7 @@ class Block(CoreBlock, Drawable):
                 markups.append('<span></span>')
 
             markups.append('<span foreground="{foreground}" font_desc="{font}">{comment}</span>'.format(
-                foreground='#444' if self.enabled else '#888', font=Constants.BLOCK_FONT, comment=Utils.encode(comment)
+                foreground='#CCC' if self.enabled else '#888', font=Constants.BLOCK_FONT, comment=Utils.encode(comment)
             ))
         if markups:
             layout = self._comment_layout = Gtk.DrawingArea().create_pango_layout('')
