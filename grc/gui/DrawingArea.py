@@ -162,6 +162,8 @@ class DrawingArea(Gtk.DrawingArea):
 
         if self.button_state[1]:
             self._auto_scroll(event)
+        elif self.button_state[2]:
+            self._auto_scroll2(event)
 
         self._flow_graph.handle_mouse_motion(
             coordinate=self._translate_event_coords(event),
@@ -190,6 +192,27 @@ class DrawingArea(Gtk.DrawingArea):
                 adj.emit('changed')
             elif pos - adj_val < Constants.SCROLL_PROXIMITY_SENSITIVITY:
                 adj.set_value(adj_val - Constants.SCROLL_DISTANCE)
+                adj.emit('changed')
+
+        scroll(x, scrollbox.get_hadjustment())
+        scroll(y, scrollbox.get_vadjustment())
+
+    def _auto_scroll2(self, event):
+        x, y = event.x, event.y
+        scrollbox = self.get_parent().get_parent()
+
+        self._update_size()
+
+        def scroll(pos, adj):
+            """scroll if we moved near the border"""
+            adj_val = adj.get_value()
+            adj_len = adj.get_page_size()
+
+            if pos - adj_val > adj_len - 3*Constants.SCROLL_PROXIMITY_SENSITIVITY:
+                adj.set_value(adj_val + 11)
+                adj.emit('changed')
+            elif pos - adj_val < 3*Constants.SCROLL_PROXIMITY_SENSITIVITY:
+                adj.set_value(adj_val - 11)
                 adj.emit('changed')
 
         scroll(x, scrollbox.get_hadjustment())
