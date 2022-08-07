@@ -39,7 +39,7 @@ class Connection(CoreConnection, Drawable):
 
         self._line = []
         self._line_width_factor = 1.0
-        self._color1 = self._color2 = None
+        self._color1 = self._color2 = colors.CONNECTION_ENABLED_COLOR
 
         self._current_port_rotations = self._current_coordinates = None
 

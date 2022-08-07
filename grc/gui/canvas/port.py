@@ -35,7 +35,7 @@ class Port(CorePort, Drawable):
 
         self._area = []
         self._bg_color = self._border_color = 0, 0, 0, 0
-        self._font_color = list(colors.FONT_COLOR)
+        self._font_color = list(colors.FLOWGRAPH_BACKGROUND_COLOR)
 
         self._line_width_factor = 1.0
         self._label_layout_offsets = 0, 0

@@ -56,7 +56,7 @@ CONNECTION_ENABLED_COLOR = get_color('#FFFFFF')
 CONNECTION_DISABLED_COLOR = get_color('#343434')
 CONNECTION_ERROR_COLOR = get_color('#FF0000')
 
-DEFAULT_DOMAIN_COLOR = get_color('#333333')
+DEFAULT_DOMAIN_COLOR = get_color('#FFF000')
 
 
 #################################################################################
