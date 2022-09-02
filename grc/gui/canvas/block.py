@@ -9,7 +9,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 
 import math
-
+from random import choice
 from gi.repository import Gtk, Pango, PangoCairo
 
 from . import colors
@@ -107,7 +107,11 @@ class Block(CoreBlock, Drawable):
             if self.state == 'enabled':
                 if self.deprecated:
                     return colors.BLOCK_DEPRECATED_BACKGROUND_COLOR
-                return colors.BLOCK_ENABLED_COLOR
+                return colors.get_color(
+                    choice(
+                        ['#A40E1A','#A85011','#A99007','#76A653','#3582B8','#433368','#3a3a3a']
+                    )
+                )
             return colors.BLOCK_DISABLED_COLOR
 
         def get_border():
@@ -138,10 +142,8 @@ class Block(CoreBlock, Drawable):
         for ports, has_busses in zip((self.active_sources, self.active_sinks), bussified):
             if not ports:
                 continue
-            port_separation = Constants.PORT_SEPARATION if not has_busses else ports[
-                0].height + Constants.PORT_SPACING
-            offset = (self.height - (len(ports) - 1) *
-                      port_separation - ports[0].height) / 2
+            port_separation = Constants.PORT_SEPARATION if not has_busses else ports[0].height + Constants.PORT_SPACING
+            offset = (self.height - (len(ports) - 1) * port_separation - ports[0].height) / 2
             for port in ports:
                 port.create_shapes()
                 port.coordinate = {
@@ -151,8 +153,7 @@ class Block(CoreBlock, Drawable):
                     270: (offset, +self.width),
                 }[port.connector_direction]
 
-                offset += Constants.PORT_SEPARATION if not has_busses else port.height + \
-                    Constants.PORT_SPACING
+                offset += Constants.PORT_SEPARATION if not has_busses else port.height + Constants.PORT_SPACING
 
     def create_labels(self, cr=None):
         """Create the labels for the signal block."""
@@ -280,7 +281,8 @@ class Block(CoreBlock, Drawable):
             port.draw(cr)
             cr.restore()
 
-        cr.rectangle(*self._area)
+        # cr.rectangle(*self._area)
+        cr.arc(self._area[2]/2,self._area[3]/2,max(self._area[2],self._area[3])/2,0,math.pi*2)
         cr.set_source_rgba(*self._bg_color)
         cr.fill_preserve()
         cr.set_source_rgba(*border_color)

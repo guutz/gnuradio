@@ -98,6 +98,7 @@ DPI_SCALING = 1.0
 GTK_DARK_THEMES = [
     'Adwaita-dark',
     'HighContrastInverse',
+    'Yaru-dark',
 ]
 
 GTK_SETTINGS_INI_PATH = '~/.config/gtk-3.0/settings.ini'

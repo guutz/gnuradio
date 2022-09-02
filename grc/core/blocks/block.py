@@ -54,6 +54,11 @@ class Block(Element):
 
     extra_data = {}
     loaded_from = '(unknown)'
+    
+    shape_data = {
+        'color': '#CCCCFF',
+        'shape': 'rectangle'
+    }
 
     def __init__(self, parent):
         """Make a new block from nested data."""

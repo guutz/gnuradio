@@ -8,6 +8,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 
 from gi.repository import Gtk, Gdk, cairo
+
 # import pycairo
 
 from .. import Constants
@@ -28,12 +29,12 @@ def get_color(color_code):
 
 HIGHLIGHT_COLOR = get_color('#FFFF00')
 BORDER_COLOR = get_color('#AAAAAA')
-BORDER_COLOR_DISABLED = get_color('#777777')
+BORDER_COLOR_DISABLED = get_color('#FF0000')
 FONT_COLOR = get_color('#CCCCCC')
 
 # Missing blocks stuff
-MISSING_BLOCK_BACKGROUND_COLOR = get_color('#FFF2F2')
-MISSING_BLOCK_BORDER_COLOR = get_color('#FF0000')
+MISSING_BLOCK_BACKGROUND_COLOR = get_color('#FF00FF')
+MISSING_BLOCK_BORDER_COLOR = get_color('#FF00FF')
 
 # Deprecated blocks
 # a light warm yellow
@@ -47,16 +48,16 @@ COMMENT_BACKGROUND_COLOR = get_color('#DDDDDD')
 FLOWGRAPH_EDGE_COLOR = COMMENT_BACKGROUND_COLOR
 
 # Block color constants
-BLOCK_ENABLED_COLOR = get_color('#340000')
-BLOCK_DISABLED_COLOR = get_color('#888888')
-BLOCK_BYPASSED_COLOR = get_color('#A4AF31')
+BLOCK_ENABLED_COLOR = get_color('#111b5a')
+BLOCK_DISABLED_COLOR = get_color('#000000')
+BLOCK_BYPASSED_COLOR = get_color('#000000')
 
 # Connection color constants
-CONNECTION_ENABLED_COLOR = get_color('#FFFFFF')
+CONNECTION_ENABLED_COLOR = get_color('#eeeeee')
 CONNECTION_DISABLED_COLOR = get_color('#343434')
 CONNECTION_ERROR_COLOR = get_color('#FF0000')
 
-DEFAULT_DOMAIN_COLOR = get_color('#FFF000')
+DEFAULT_DOMAIN_COLOR = get_color('#FFFFFF')
 
 
 #################################################################################

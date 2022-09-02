@@ -92,6 +92,7 @@ class Connection(CoreConnection, Drawable):
             self._color1 = None
             self._color2 = colors.CONNECTION_ENABLED_COLOR
         else:
+            self._line_width_factor = 1.0
             if source.domain != sink.domain:
                 self._line_width_factor = 2.0
             self._color1 = get_domain_color(source.domain)
